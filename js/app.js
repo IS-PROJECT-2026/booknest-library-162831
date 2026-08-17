@@ -88,15 +88,24 @@ const books = [
 const catalogueContainer = document.querySelector("#catalogue-container");
 const searchInput = document.querySelector("#catalogue-search");
 const categoryFilter = document.querySelector("#category-filter");
+const favoriteBookIds = new Set();
 
 function createBookCard(book) {
   const statusClass = book.available
     ? "book-card__status book-card__status--available"
     : "book-card__status book-card__status--borrowed";
   const statusText = book.available ? "Available" : "Borrowed";
+  const isFavorite = favoriteBookIds.has(book.id);
+  const favoriteClass = isFavorite
+    ? "book-card__action book-card__action--favorite"
+    : "book-card__action";
+  const favoriteText = isFavorite ? "Favorited" : "Favorite";
+  const favoriteLabel = isFavorite
+    ? `Remove ${book.title} from favorites`
+    : `Add ${book.title} to favorites`;
 
   return `
-    <article class="book-card" data-book-id="${book.id}">
+    <article class="book-card${isFavorite ? " book-card--favorite" : ""}" data-book-id="${book.id}">
       <div class="book-card__content">
         <p class="book-card__category">${book.category}</p>
         <h3 class="book-card__title">${book.title}</h3>
@@ -105,7 +114,9 @@ function createBookCard(book) {
 
       <div class="book-card__footer">
         <span class="${statusClass}">${statusText}</span>
-        <span class="book-card__action" aria-label="Favorite action placeholder">Favorite</span>
+        <button class="${favoriteClass}" type="button" data-favorite-id="${book.id}" aria-pressed="${isFavorite}" aria-label="${favoriteLabel}">
+          ${favoriteText}
+        </button>
       </div>
     </article>
   `;
@@ -145,7 +156,26 @@ function applyCatalogueFilters() {
   renderCatalogue(filteredBooks);
 }
 
+function toggleFavorite(bookId) {
+  if (favoriteBookIds.has(bookId)) {
+    favoriteBookIds.delete(bookId);
+  } else {
+    favoriteBookIds.add(bookId);
+  }
+
+  applyCatalogueFilters();
+}
+
 searchInput.addEventListener("input", applyCatalogueFilters);
 categoryFilter.addEventListener("change", applyCatalogueFilters);
+catalogueContainer.addEventListener("click", (event) => {
+  const favoriteButton = event.target.closest("[data-favorite-id]");
+
+  if (!favoriteButton) {
+    return;
+  }
+
+  toggleFavorite(Number(favoriteButton.dataset.favoriteId));
+});
 
 renderCatalogue(books);

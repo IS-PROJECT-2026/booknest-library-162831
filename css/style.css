@@ -116,6 +116,11 @@ main {
   background-color: #fff;
 }
 
+.book-card--favorite {
+  border-color: #b79258;
+  background-color: #fffaf1;
+}
+
 .book-card__content {
   display: grid;
   gap: 0.5rem;
@@ -172,8 +177,19 @@ main {
 }
 
 .book-card__action {
+  min-height: 2rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #b79258;
+  background-color: #fff;
   color: #5d4630;
+  cursor: pointer;
+  font: inherit;
   font-weight: 700;
+}
+
+.book-card__action--favorite {
+  background-color: #f5dfb8;
+  color: #4f3515;
 }
 
 .site-footer {
