@@ -86,6 +86,7 @@ const books = [
 ];
 
 const catalogueContainer = document.querySelector("#catalogue-container");
+const searchInput = document.querySelector("#catalogue-search");
 
 function createBookCard(book) {
   const statusClass = book.available
@@ -109,8 +110,29 @@ function createBookCard(book) {
   `;
 }
 
-function renderCatalogue() {
-  catalogueContainer.innerHTML = books.map(createBookCard).join("");
+function renderCatalogue(bookList) {
+  catalogueContainer.innerHTML = bookList.map(createBookCard).join("");
 }
 
-renderCatalogue();
+function searchBooks(searchTerm) {
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+
+  if (!normalizedSearchTerm) {
+    return books;
+  }
+
+  return books.filter((book) => {
+    const title = book.title.toLowerCase();
+    const author = book.author.toLowerCase();
+
+    return title.includes(normalizedSearchTerm) || author.includes(normalizedSearchTerm);
+  });
+}
+
+searchInput.addEventListener("input", () => {
+  const matchingBooks = searchBooks(searchInput.value);
+
+  renderCatalogue(matchingBooks);
+});
+
+renderCatalogue(books);
