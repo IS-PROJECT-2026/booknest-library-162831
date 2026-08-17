@@ -1,3 +1,5 @@
+// BookNest catalogue application
+
 const books = [
   {
     id: 1,
