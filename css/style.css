@@ -2,23 +2,102 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   color: #222;
-  background-color: #f7f7f7;
+  background-color: #f4f6f5;
 }
 
-header,
-footer {
+.page-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.site-header,
+.site-footer {
   background-color: #2f5d50;
   color: #fff;
-  padding: 1rem;
-  text-align: center;
+}
+
+.header-content {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.site-header h1,
+.hero h2,
+.section-heading h2,
+.site-footer p {
+  margin: 0;
 }
 
 main {
+  padding: 2rem 0;
+}
+
+.hero {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+}
+
+.hero p {
+  max-width: 640px;
+  margin: 0.75rem 0 0;
+  line-height: 1.6;
+}
+
+.catalogue {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+}
+
+.catalogue-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
   padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #d8dedb;
+}
+
+.catalogue-controls label {
+  font-weight: 700;
+}
+
+.catalogue-controls input,
+.catalogue-controls select {
+  min-height: 2.5rem;
+  padding: 0 0.75rem;
+  border: 1px solid #b8c3bf;
+  font: inherit;
+}
+
+.catalogue-controls input {
+  min-width: 260px;
+  flex: 1;
 }
 
 #catalogue-container {
-  border: 1px solid #ccc;
-  min-height: 120px;
+  border: 1px solid #d8dedb;
+  min-height: 320px;
   background-color: #fff;
+}
+
+.catalogue-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.site-footer {
+  padding: 1rem 0;
+  text-align: center;
 }
