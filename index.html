@@ -8,19 +8,44 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>BookNest</h1>
+  <header class="site-header">
+    <div class="page-shell header-content">
+      <h1>BookNest</h1>
+    </div>
   </header>
 
   <main>
-    <section aria-labelledby="catalogue-heading">
-      <h2 id="catalogue-heading">Library Catalogue</h2>
-      <div id="catalogue-container"></div>
+    <section class="hero page-shell" aria-labelledby="hero-heading">
+      <h2 id="hero-heading">Library Catalogue</h2>
+      <p>Explore the BookNest collection from one simple catalogue page.</p>
+    </section>
+
+    <section class="catalogue page-shell" aria-labelledby="catalogue-heading">
+      <div class="section-heading">
+        <h2 id="catalogue-heading">Catalogue</h2>
+      </div>
+
+      <div class="catalogue-controls" aria-label="Catalogue controls">
+        <label for="catalogue-search">Search books</label>
+        <input type="search" id="catalogue-search" name="catalogue-search" placeholder="Search by title or author">
+
+        <label for="category-filter">Category</label>
+        <select id="category-filter" name="category-filter">
+          <option value="">All categories</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-fiction</option>
+          <option value="reference">Reference</option>
+        </select>
+      </div>
+
+      <div id="catalogue-container" class="catalogue-grid" aria-label="Book catalogue"></div>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 BookNest Library Catalogue</p>
+  <footer class="site-footer">
+    <div class="page-shell">
+      <p>&copy; 2026 BookNest Library Catalogue</p>
+    </div>
   </footer>
 
   <script src="js/app.js"></script>
