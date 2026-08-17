@@ -88,7 +88,20 @@ const books = [
 const catalogueContainer = document.querySelector("#catalogue-container");
 const searchInput = document.querySelector("#catalogue-search");
 const categoryFilter = document.querySelector("#category-filter");
+const favoritesStorageKey = "booknestFavorites";
 const favoriteBookIds = new Set();
+
+function loadFavoriteBookIds() {
+  const savedFavorites = JSON.parse(localStorage.getItem(favoritesStorageKey)) || [];
+
+  savedFavorites.forEach((bookId) => {
+    favoriteBookIds.add(bookId);
+  });
+}
+
+function saveFavoriteBookIds() {
+  localStorage.setItem(favoritesStorageKey, JSON.stringify([...favoriteBookIds]));
+}
 
 function createBookCard(book) {
   const statusClass = book.available
@@ -163,6 +176,7 @@ function toggleFavorite(bookId) {
     favoriteBookIds.add(bookId);
   }
 
+  saveFavoriteBookIds();
   applyCatalogueFilters();
 }
 
@@ -178,4 +192,5 @@ catalogueContainer.addEventListener("click", (event) => {
   toggleFavorite(Number(favoriteButton.dataset.favoriteId));
 });
 
+loadFavoriteBookIds();
 renderCatalogue(books);
