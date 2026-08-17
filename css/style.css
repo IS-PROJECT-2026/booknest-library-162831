@@ -152,12 +152,23 @@ main {
 }
 
 .book-card__status {
-  color: #2f5d50;
+  display: inline-block;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
-.book-card__status--unavailable {
+.book-card__status--available {
+  border-color: #8fbbb0;
+  color: #1f5f49;
+  background-color: #e7f0ed;
+}
+
+.book-card__status--borrowed {
+  border-color: #d7aa9a;
   color: #8a3c2d;
+  background-color: #f7e8e2;
 }
 
 .book-card__action {

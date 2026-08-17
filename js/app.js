@@ -91,9 +91,9 @@ const categoryFilter = document.querySelector("#category-filter");
 
 function createBookCard(book) {
   const statusClass = book.available
-    ? "book-card__status"
-    : "book-card__status book-card__status--unavailable";
-  const statusText = book.available ? "Available" : "Checked out";
+    ? "book-card__status book-card__status--available"
+    : "book-card__status book-card__status--borrowed";
+  const statusText = book.available ? "Available" : "Borrowed";
 
   return `
     <article class="book-card" data-book-id="${book.id}">
