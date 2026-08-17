@@ -5,10 +5,14 @@ body {
   background-color: #f4f6f5;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .page-shell {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.25rem;
 }
 
 .site-header,
@@ -85,6 +89,10 @@ main {
   flex: 1;
 }
 
+.catalogue-controls select {
+  max-width: 100%;
+}
+
 #catalogue-container {
   border: 1px solid #d8dedb;
   min-height: 320px;
@@ -156,4 +164,90 @@ main {
 .site-footer {
   padding: 1rem 0;
   text-align: center;
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  main {
+    padding: 1.5rem 0;
+  }
+
+  .hero {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .catalogue-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.65rem;
+  }
+
+  .catalogue-controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .catalogue-controls input,
+  .catalogue-controls select {
+    width: 100%;
+  }
+
+  .catalogue-controls input {
+    min-width: 0;
+  }
+
+  #catalogue-container {
+    min-height: 260px;
+  }
+
+  .catalogue-grid {
+    grid-template-columns: 1fr;
+    padding: 0.75rem;
+  }
+
+  .book-card {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 420px) {
+  .page-shell {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  main {
+    padding: 1rem 0;
+  }
+
+  .hero,
+  .catalogue {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .catalogue-controls,
+  .book-card {
+    padding: 0.75rem;
+  }
+
+  .book-card__footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
