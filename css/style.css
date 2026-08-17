@@ -206,6 +206,26 @@ main {
   color: #4f3515;
 }
 
+.catalogue-empty {
+  grid-column: 1 / -1;
+  padding: 2rem 1rem;
+  border: 1px solid #d8dedb;
+  background-color: #f8fbfa;
+  color: #2f5d50;
+  text-align: center;
+}
+
+.catalogue-empty h3 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.catalogue-empty p {
+  margin: 0.5rem 0 0;
+  color: #59625f;
+  line-height: 1.5;
+}
+
 .site-footer {
   padding: 1rem 0;
   text-align: center;
