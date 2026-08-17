@@ -1,1 +1,116 @@
-console.log("BookNest app.js connected");
+const books = [
+  {
+    id: 1,
+    title: "The Midnight Library",
+    author: "Matt Haig",
+    category: "Fiction",
+    available: true
+  },
+  {
+    id: 2,
+    title: "Tomorrow, and Tomorrow, and Tomorrow",
+    author: "Gabrielle Zevin",
+    category: "Fiction",
+    available: false
+  },
+  {
+    id: 3,
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    category: "Technology",
+    available: true
+  },
+  {
+    id: 4,
+    title: "The Pragmatic Programmer",
+    author: "David Thomas and Andrew Hunt",
+    category: "Technology",
+    available: true
+  },
+  {
+    id: 5,
+    title: "The Lean Startup",
+    author: "Eric Ries",
+    category: "Business",
+    available: false
+  },
+  {
+    id: 6,
+    title: "Good to Great",
+    author: "Jim Collins",
+    category: "Business",
+    available: true
+  },
+  {
+    id: 7,
+    title: "A Brief History of Time",
+    author: "Stephen Hawking",
+    category: "Science",
+    available: true
+  },
+  {
+    id: 8,
+    title: "The Gene",
+    author: "Siddhartha Mukherjee",
+    category: "Science",
+    available: false
+  },
+  {
+    id: 9,
+    title: "Atomic Habits",
+    author: "James Clear",
+    category: "Self Development",
+    available: true
+  },
+  {
+    id: 10,
+    title: "Deep Work",
+    author: "Cal Newport",
+    category: "Self Development",
+    available: true
+  },
+  {
+    id: 11,
+    title: "Project Hail Mary",
+    author: "Andy Weir",
+    category: "Fiction",
+    available: true
+  },
+  {
+    id: 12,
+    title: "Designing Data-Intensive Applications",
+    author: "Martin Kleppmann",
+    category: "Technology",
+    available: false
+  }
+];
+
+const catalogueContainer = document.querySelector("#catalogue-container");
+
+function createBookCard(book) {
+  const statusClass = book.available
+    ? "book-card__status"
+    : "book-card__status book-card__status--unavailable";
+  const statusText = book.available ? "Available" : "Checked out";
+
+  return `
+    <article class="book-card" data-book-id="${book.id}">
+      <div class="book-card__content">
+        <p class="book-card__category">${book.category}</p>
+        <h3 class="book-card__title">${book.title}</h3>
+        <p class="book-card__author">by ${book.author}</p>
+      </div>
+
+      <div class="book-card__footer">
+        <span class="${statusClass}">${statusText}</span>
+        <span class="book-card__action" aria-label="Favorite action placeholder">Favorite</span>
+      </div>
+    </article>
+  `;
+}
+
+function renderCatalogue() {
+  catalogueContainer.innerHTML = books.map(createBookCard).join("");
+}
+
+renderCatalogue();
