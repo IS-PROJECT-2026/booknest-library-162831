@@ -87,6 +87,7 @@ const books = [
 
 const catalogueContainer = document.querySelector("#catalogue-container");
 const searchInput = document.querySelector("#catalogue-search");
+const categoryFilter = document.querySelector("#category-filter");
 
 function createBookCard(book) {
   const statusClass = book.available
@@ -129,10 +130,22 @@ function searchBooks(searchTerm) {
   });
 }
 
-searchInput.addEventListener("input", () => {
-  const matchingBooks = searchBooks(searchInput.value);
+function filterBooksByCategory(bookList, category) {
+  if (!category) {
+    return bookList;
+  }
 
-  renderCatalogue(matchingBooks);
-});
+  return bookList.filter((book) => book.category === category);
+}
+
+function applyCatalogueFilters() {
+  const matchingSearchBooks = searchBooks(searchInput.value);
+  const filteredBooks = filterBooksByCategory(matchingSearchBooks, categoryFilter.value);
+
+  renderCatalogue(filteredBooks);
+}
+
+searchInput.addEventListener("input", applyCatalogueFilters);
+categoryFilter.addEventListener("change", applyCatalogueFilters);
 
 renderCatalogue(books);
