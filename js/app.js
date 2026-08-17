@@ -135,7 +135,21 @@ function createBookCard(book) {
   `;
 }
 
+function createEmptyState() {
+  return `
+    <div class="catalogue-empty" role="status">
+      <h3>No books found.</h3>
+      <p>Try changing your search or category.</p>
+    </div>
+  `;
+}
+
 function renderCatalogue(bookList) {
+  if (bookList.length === 0) {
+    catalogueContainer.innerHTML = createEmptyState();
+    return;
+  }
+
   catalogueContainer.innerHTML = bookList.map(createBookCard).join("");
 }
 
